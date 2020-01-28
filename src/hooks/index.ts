@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { createContainer } from 'unstated-next';
 
-const useCounterN = () => {
+const useCounter = () => {
   // state
   const [count, setCount] = useState(0);
 
@@ -11,6 +12,9 @@ const useCounterN = () => {
   return { count, decrement, increment }
 }
 
+const CounterContainer = createContainer(useCounter)
+
 export {
-  useCounterN,
+  useCounter,
+  CounterContainer,
 };
