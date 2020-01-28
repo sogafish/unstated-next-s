@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from 'react';
+import { useCounterN } from './hooks/';
+import NonUnstatedCounter from './components/NonUnstatedCounter';
+
+export const CounterContext = createContext({
+  count: 0,
+  decrement: () => {},
+  increment: () => {},
+});
 
 const App: React.FC = () => {
+  const counter = useCounterN();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="contents">
+      <h1>Context + hooks</h1>
+      <CounterContext.Provider value={counter}>
+        <NonUnstatedCounter />
+        <NonUnstatedCounter />
+      </CounterContext.Provider>
     </div>
   );
 }
