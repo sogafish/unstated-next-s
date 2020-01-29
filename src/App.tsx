@@ -1,12 +1,15 @@
 import React, { createContext } from 'react';
-import { useCounter, CounterContainer } from './hooks/';
+import { useCounter, CounterContainer } from './hooks';
 import NonUnstatedCounter from './components/NonUnstatedCounter';
+import ResetButtonN from './components/NonUnstatedCounter/ResetButtonN';
 import UnstatedCounter from './components/UnstatedCounter';
+import ResetButton from './components/UnstatedCounter/ResetButton';
 
 export const CounterContext = createContext({
   count: 0,
   decrement: () => {},
   increment: () => {},
+  reset: () => {}
 });
 
 const App: React.FC = () => {
@@ -19,13 +22,15 @@ const App: React.FC = () => {
         <CounterContext.Provider value={counter}>
           <NonUnstatedCounter />
           <NonUnstatedCounter />
+          <ResetButtonN />
         </CounterContext.Provider>
       </>
       <>
         <h1>unstated-next</h1>
         <CounterContainer.Provider>
-            <UnstatedCounter />
-            <UnstatedCounter />
+          <UnstatedCounter />
+          <UnstatedCounter />
+          <ResetButton />
         </CounterContainer.Provider>
       </>
     </div>

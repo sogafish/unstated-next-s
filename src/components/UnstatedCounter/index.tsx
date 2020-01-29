@@ -1,6 +1,6 @@
 import React from 'react';
-import { CounterContainer } from '../../hooks';
 import { useContainer } from 'unstated-next';
+import { CounterContainer } from '../../hooks';
 
 const UnstatedCounter = () => {
   const {
